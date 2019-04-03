@@ -4,10 +4,14 @@ FROM tiangolo/uwsgi-nginx-flask:flask
 MAINTAINER praveenksarathi
 
 #Moving the base application folder to Flask/app/ folder
-COPY ./app /app
+COPY . /app
+
+WORKDIR /app
 
 # tell the port number the container should expose
 EXPOSE 5000
 
+ENTRYPOINT ["python"]
+
 # Command to run the program
-CMD ["python", "./app_rest.py","-p 5000"]
+CMD ["app_rest.py","-p 5000"]
